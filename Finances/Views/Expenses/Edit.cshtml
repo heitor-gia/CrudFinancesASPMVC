@@ -1,0 +1,42 @@
+﻿@model Finances.Models.Entities.Expense
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Alterar despesa</h2>
+<form action="/Expenses/New" method="post">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label for="value">Valor</label>
+            <input type="number" name="value" placeholder="Valor" class="form-control" value="@Model.value" />
+
+        </div>
+        <div class="form-group">
+            <label for="date">Data</label>
+            <input type="date" name="date" placeholder="Data" class="form-control" value="@String.Format("{0:dd/MM/yyyy}",Model.date)" />
+
+        </div>
+        <div class="form-group">
+            <label for="value">Categoria</label>
+            <select name="id_category">
+                @foreach (var item in (ViewBag.categories as IEnumerable<Finances.Models.Entities.Category>))
+                {
+                    <option value="@item.id">@item.name</option>
+                }
+            </select>
+
+        </div>
+        <div class="form-group">
+            <label for="value">Categoria</label>
+            <select name="id_category">
+                @foreach (var item in (ViewBag.establishments as IEnumerable<Finances.Models.Entities.Establishment>))
+                {
+                    <option value="@item.id">@item.name</option>
+                }
+            </select>
+
+        </div>
+        <input type="hidden" name="id" value="@Model.id" />
+        <input type="submit" class="btn btn-success" value="Salvar" />
+    </div>
+</form>

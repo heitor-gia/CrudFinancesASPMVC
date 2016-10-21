@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Finances.Models.Entities.Expense>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Despesas</h2>
+
+<p>
+    <a href="/Expenses/New" class="btn btn-primary">Nova Despesa</a>
+</p>
+<table class="table">
+    <tr>
+        <th>Data</th>
+        <th>Valor</th>
+        <th>Categoria</th>
+        <th>Estabelecimento</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@String.Format("{0:dd/MM/yyyy}", item.date)</td>
+        <td>@item.value</td>
+        <td>@(ViewBag.categories as IEnumerable<Finances.Models.Entities.Category>).Find(a => a.id == item.id_category).name</td>
+        <td>@(ViewBag.establishments as IEnumerable<Finances.Models.Entities.Establishment>).Find(a => a.id == item.id_establishment).</td>
+        <td>
+            <a href="/Expenses/Delete/@item.id" class="btn btn-danger">Deletar</a> |
+            <a href="/Expenses/Edit/@item.id" class="btn btn-success">Alterar</a>
+        </td>
+    </tr>
+}
+
+</table>
