@@ -45,7 +45,13 @@ namespace Finances.Controllers
 
             if (categoriesRepository.GetById(id).id_user == (int)Session["id_user"])
             {
-                categoriesRepository.Delete(id);
+                try
+                {
+                    categoriesRepository.Delete(id);
+                }catch(MySql.Data.MySqlClient.MySqlException ex)
+                {
+                    TempData["error"]= "Não é possível excluir uma categoria que possui depesas catadastradas.";
+                }
             }
             return RedirectToAction("Index");
         }

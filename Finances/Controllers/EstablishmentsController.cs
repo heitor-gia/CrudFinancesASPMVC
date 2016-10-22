@@ -46,8 +46,14 @@ namespace Finances.Controllers
 
             if (establishmentsRepository.GetById(id).id_user == (int)Session["id_user"])
             {
-                establishmentsRepository.Delete(id);
-            }
+                try
+                {
+                    establishmentsRepository.Delete(id);
+                }catch (MySql.Data.MySqlClient.MySqlException ex)
+                {
+                    TempData["error"] = "Não é possível excluir um estabelecimento que possui depesas cadastradas.";
+                }
+        }
             return RedirectToAction("Index");
         }
 

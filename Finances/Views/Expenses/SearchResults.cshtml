@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Resultados";
+}
+
+<h2>Resultados</h2>
+<table class="table">
+    <tr>
+        <th>Data</th>
+        <th>Valor</th>
+        <th>Categoria</th>
+        <th>Estabelecimento</th>
+        <th></th>
+    </tr>
+      
+
+    @{
+
+        if (Model.Count < 1)
+        {
+           <td colspan=6 class="text-center"><h1>Nenhum resultado!</h1></td>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+            @:<tr>
+                @:<td>@String.Format("{0:dd/MM/yyyy}", item.date)</td>
+                @:<td>@item.price</td>
+                @:<td>@((ViewBag.categories as List<Finances.Models.Entities.Category>).Find(a => a.id == item.id_category).name)</td>
+                @:<td>@((ViewBag.establishments as List<Finances.Models.Entities.Establishment>).Find(a => a.id == item.id_establishment).name)</td>
+                @:<td>
+                    @:<a href="/Expenses/Edit/@item.id" class="btn btn-success">Editar</a>
+                    @:<a href="/Expenses/Delete/@item.id" class="btn btn-danger">Deletar</a>
+
+                @:</td>
+            @:</tr>
+        }
+            }
+        }
+
+</table>

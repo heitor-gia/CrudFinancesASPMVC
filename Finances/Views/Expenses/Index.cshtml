@@ -1,13 +1,19 @@
 ﻿@model IEnumerable<Finances.Models.Entities.Expense>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Despesas";
 }
 
 <h2>Despesas</h2>
-
+@if (TempData["alert"] != null)
+{
+    <div class="alert alert-info center-block" role="alert">
+        @TempData["alert"]
+    </div>
+}
 <p>
     <a href="/Expenses/New" class="btn btn-primary">Nova Despesa</a>
+    <a href="/Expenses/Search" class="btn btn-default text-right">Consulta</a>
 </p>
 <table class="table">
     <tr>

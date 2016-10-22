@@ -189,6 +189,8 @@
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Categories\New.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Expenses\Search.cshtml" />
+    <Content Include="Views\Expenses\SearchResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

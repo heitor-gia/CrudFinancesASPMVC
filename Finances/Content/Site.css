@@ -32,3 +32,20 @@ textarea {
   margin-left: auto;
   margin-right: auto;
 }
+.navbar{
+    background:#057900;
+    color:white !important;
+}
+.navbar-inverse .navbar-nav > li > a , .navbar-inverse .navbar-brand {
+    color:white !important;
+}
+
+.optblock{
+    border:1px solid #CCC;
+    border-radius: 10px;
+    padding:30px;
+}
+
+.col-md-4{
+    padding:10px !important
+}

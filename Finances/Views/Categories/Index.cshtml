@@ -5,7 +5,12 @@
 }
 
 <h2>Categorias</h2>
-
+@if (TempData["error"] != null)
+{
+    <div class="alert alert-danger center-block" role="alert">
+        @TempData["error"]
+    </div>
+}
 <p>
     <a href="/Categories/New" class="btn btn-primary">Nova Categoria</a>
 </p>

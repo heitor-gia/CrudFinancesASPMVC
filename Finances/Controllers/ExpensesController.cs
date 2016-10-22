@@ -32,8 +32,11 @@ namespace Finances.Controllers
 
             ViewBag.categories = categoriesRepository.GetAllFromUser((int)Session["id_user"]);
             ViewBag.establishments = establishmentsRepository.GetAllFromUser((int)Session["id_user"]);
-            if (ViewBag.categories.Count == 0 || ViewBag.categories.Count == 0) return RedirectToAction("Index", "Expenses");
-            else return View();
+            if (ViewBag.categories.Count == 0 || ViewBag.categories.Count == 0)
+            {
+                TempData["alert"] = "Primeiro adincione pelo menos uma categoria e um estabelecimento.";
+                return RedirectToAction("Index", "Expenses");
+            } else return View();
         }
 
         [HttpPost]
@@ -60,6 +63,8 @@ namespace Finances.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            if (Session["loggedIn"] == null) return RedirectToAction("Login", "Home");
+
             Expense expense = expensesRepository.GetById(id);
             ViewBag.categories = categoriesRepository.GetAllFromUser((int)Session["id_user"]);
             ViewBag.establishments = establishmentsRepository.GetAllFromUser((int)Session["id_user"]);
@@ -85,6 +90,28 @@ namespace Finances.Controllers
             
         }
 
+        public ActionResult Search()
+        {
+            if (Session["loggedIn"] == null) return RedirectToAction("Login", "Home");
 
+            ViewBag.categories = categoriesRepository.GetAllFromUser((int)Session["id_user"]);
+            ViewBag.establishments = establishmentsRepository.GetAllFromUser((int)Session["id_user"]);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SearchResults()
+        {
+            if (Session["loggedIn"] == null) return RedirectToAction("Login", "Home");
+
+            int id_establishment = Int32.Parse(Request["id_establishment"]);
+            int id_category= Int32.Parse(Request["id_category"]);
+            string period = Request["period"];
+
+            ViewBag.categories = categoriesRepository.GetAllFromUser((int)Session["id_user"]);
+            ViewBag.establishments = establishmentsRepository.GetAllFromUser((int)Session["id_user"]);
+            List<Expense> results = expensesRepository.Search(id_establishment, id_category, period, (int)Session["id_user"]);
+            return View(results);
+        }
     }
 }

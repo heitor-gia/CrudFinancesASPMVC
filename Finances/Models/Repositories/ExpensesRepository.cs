@@ -147,5 +147,47 @@ namespace Finances.Models.Repositories
 
             rj45.ExecuteCommand(cmm);
         }
+
+        public List<Expense> Search(int id_establishment, int id_category, string period, int id_user)
+        {
+            StringBuilder sql = new StringBuilder();
+            MySqlCommand cmm = new MySqlCommand();
+            List<Expense> expenses = new List<Expense>();
+            sql.Append("SELECT * FROM expenses WHERE id_user_expense=@id_user");
+
+
+            if (id_establishment != -1)
+                sql.Append(" AND id_establishment_expense = @id_establishment ");
+            if (id_category != -1)
+                sql.Append(" AND id_category_expense=@id_category ");
+            if (period != "")
+                sql.Append(" AND date_expense BETWEEN @begin_date AND @end_date ");
+
+
+            sql.Append(" ORDER BY date_expense DESC");
+
+            cmm.Parameters.AddWithValue("@id_user", id_user);
+            cmm.Parameters.AddWithValue("@id_establishment", id_establishment);
+            cmm.Parameters.AddWithValue("@id_category", id_category);
+            cmm.Parameters.AddWithValue("@begin_date", period+"-01");
+            cmm.Parameters.AddWithValue("@end_date", period + "-31");
+            cmm.CommandText = sql.ToString();
+            MySqlDataReader dr = rj45.getDataReader(cmm);
+
+            while (dr.Read())
+            {
+                expenses.Add(new Expense()
+                {
+                    id = dr.GetInt32("id_expense"),
+                    date = dr.GetDateTime("date_expense"),
+                    price = dr.GetDouble("value_expense"),
+                    id_establishment = dr.GetInt32("id_establishment_expense"),
+                    id_category = dr.GetInt32("id_category_expense"),
+                    id_user = dr.GetInt32("id_user_expense")
+                });
+            }
+            dr.Close();
+            return expenses;
+        }
     }
 }

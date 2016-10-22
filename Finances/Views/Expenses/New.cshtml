@@ -18,7 +18,7 @@
         </div>
         <div class="form-group">
             <label for="id_category">Categoria</label>
-            <select name="id_category">
+            <select name="id_category" class="form-control">
                 @foreach (var item in (ViewBag.categories as IEnumerable<Finances.Models.Entities.Category>))
                 {
                     <option value="@item.id">@item.name</option>
@@ -28,7 +28,7 @@
         </div>
         <div class="form-group">
             <label for="id_establishment">Estabelecimento</label>
-            <select name="id_establishment">
+            <select name="id_establishment" class="form-control">
                 @foreach (var item in (ViewBag.establishments as IEnumerable<Finances.Models.Entities.Establishment>))
                 {
                     <option value="@item.id">@item.name</option>

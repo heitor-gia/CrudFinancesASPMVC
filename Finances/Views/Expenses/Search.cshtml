@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+}
+
+<h1 class="text-center">Consulta</h1>
+<form method="post" action="/Expenses/SearchResults">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="optblock">
+                <h3 class="text-center">Selecione a categoria </h3>
+                <select name="id_category" class="form-control center-block">
+                    <option value="-1">Selecione...</option>
+                    @foreach (var item in (ViewBag.categories as IEnumerable<Finances.Models.Entities.Category>))
+                    {
+                        <option value="@item.id">@item.name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="optblock">
+                <h3 class="text-center">Selecione o estabelecimento </h3>
+                <select name="id_establishment" class="form-control center-block ">
+                    <option value="-1">Selecione...</option>
+                    @foreach (var item in (ViewBag.establishments as IEnumerable<Finances.Models.Entities.Establishment>))
+                    {
+                        <option value="@item.id">@item.name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="optblock">
+                <h3 class="text-center">Selecione o período</h3>
+                <input type="month" name="period" class="form-control center-block" />
+            </div>
+        </div>
+    </div>
+    <input type="submit" class="btn btn-primary btn-lg center-block"  value="Consultar"/> 
+</form>
+
+
+

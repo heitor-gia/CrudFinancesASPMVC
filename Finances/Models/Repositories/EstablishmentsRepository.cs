@@ -84,7 +84,7 @@ namespace Finances.Models.Repositories
         {
             StringBuilder sql = new StringBuilder();
             MySqlCommand cmm = new MySqlCommand();
-            sql.Append("DELETE from establishmemts");
+            sql.Append("DELETE from establishments ");
             sql.Append("WHERE id_establishment=@id");
 
             cmm.Parameters.AddWithValue("@id", id);

@@ -33,16 +33,3 @@ create table expenses(
     FOREIGN KEY(id_establishment_expense) REFERENCES establishments(id_establishment),
     FOREIGN KEY (id_category_expense) REFERENCES categories(id_category)
 );
-
-create view fullexpenses as
-	select e.id_expense,e.date_expense,e.value_expense,
-			et.id_establishment, et.name_establishment,
-			c.id_category,c.name_category,
-			u.id_user,u.name_user
-		from expenses e
-			inner join establishments et
-				on et.id_establishment = e.id_establishment_expense
-			inner join categories c
-				on c.id_category = e.id_category_expense
-			inner join users u
-				on u.id_user = e.id_user_expense;
