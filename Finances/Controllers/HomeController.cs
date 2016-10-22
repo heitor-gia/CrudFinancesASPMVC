@@ -13,19 +13,11 @@ namespace Finances.Controllers
 
         UsersRepository repository = new UsersRepository();
 
-        public ActionResult Index()
-        {
-            if (Session["logado"] != null) return RedirectToAction("Login");
-
-
-
-            return View();
-        }
 
         [HttpGet]
         public ActionResult Login()
         {
-            if (Session["logado"] != null) return RedirectToAction("Index","Expenses");
+            if (Session["loggedIn"] != null) return RedirectToAction("Index","Expenses");
             return View();
         }
 
@@ -67,7 +59,7 @@ namespace Finances.Controllers
         public ActionResult Register(User user)
         {
             repository.Create(user);
-            return RedirectToAction("Login");
+            return RedirectToAction("Login","Home");
         }
 
         public ActionResult Logout()
@@ -75,7 +67,7 @@ namespace Finances.Controllers
             Session["name_user"] = null;
             Session["id_user"] = null;
             Session["loggedIn"] = null;
-            return RedirectToAction("Login");
+            return RedirectToAction("Login","Home");
         }
     }
 }

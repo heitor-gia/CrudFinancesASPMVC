@@ -18,7 +18,7 @@ namespace Finances.Controllers
 
         public ActionResult Index()
         {
-            if (Session["loggedIn"] == null) return RedirectToAction("Login");
+            if (Session["loggedIn"] == null) return RedirectToAction("Login","Home");
 
             ViewBag.categories = categoriesRepository.GetAllFromUser((int)Session["id_user"]);
             ViewBag.establishments = establishmentsRepository.GetAllFromUser((int)Session["id_user"]);
@@ -28,7 +28,7 @@ namespace Finances.Controllers
         [HttpGet]
         public ActionResult New()
         {
-            if (Session["loggedIn"] == null) return RedirectToAction("Login");
+            if (Session["loggedIn"] == null) return RedirectToAction("Login","Home");
 
             ViewBag.categories = categoriesRepository.GetAllFromUser((int)Session["id_user"]);
             ViewBag.establishments = establishmentsRepository.GetAllFromUser((int)Session["id_user"]);
@@ -39,7 +39,7 @@ namespace Finances.Controllers
         [HttpPost]
         public ActionResult New(Expense expense)
         {
-            if (Session["loggedIn"] == null) return RedirectToAction("Login");
+            if (Session["loggedIn"] == null) return RedirectToAction("Login","Home");
 
             expense.id_user = (int)Session["id_user"];
             expensesRepository.Create(expense);
@@ -48,7 +48,7 @@ namespace Finances.Controllers
 
         public ActionResult Delete(int id)
         {
-            if (Session["loggedIn"] == null) return RedirectToAction("Login");
+            if (Session["loggedIn"] == null) return RedirectToAction("Login","Home");
 
             if (expensesRepository.GetById(id).id_user == (int)Session["id_user"])
             {
