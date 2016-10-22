@@ -41,7 +41,7 @@ namespace Finances.Controllers
         {
             if (Session["loggedIn"] == null) return RedirectToAction("Login");
 
-            expense.id_user = (int)Session["user_id"];
+            expense.id_user = (int)Session["id_user"];
             expensesRepository.Create(expense);
             return RedirectToAction("Index");
         }
@@ -50,7 +50,7 @@ namespace Finances.Controllers
         {
             if (Session["loggedIn"] == null) return RedirectToAction("Login");
 
-            if (expensesRepository.GetById(id).id_user == (int)Session["user_id"])
+            if (expensesRepository.GetById(id).id_user == (int)Session["id_user"])
             {
                 expensesRepository.Delete(id);   
             }
@@ -61,8 +61,9 @@ namespace Finances.Controllers
         public ActionResult Edit(int id)
         {
             Expense expense = expensesRepository.GetById(id);
-
-            if(expense.id_user == (int)Session["id_user"])
+            ViewBag.categories = categoriesRepository.GetAllFromUser((int)Session["id_user"]);
+            ViewBag.establishments = establishmentsRepository.GetAllFromUser((int)Session["id_user"]);
+            if (expense.id_user == (int)Session["id_user"])
             {
                 return View(expense);
             }

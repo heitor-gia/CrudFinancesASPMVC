@@ -21,9 +21,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>@String.Format("{0:dd/MM/yyyy}", item.date)</td>
-        <td>@item.value</td>
-        <td>@(ViewBag.categories as IEnumerable<Finances.Models.Entities.Category>).Find(a => a.id == item.id_category).name</td>
-        <td>@(ViewBag.establishments as IEnumerable<Finances.Models.Entities.Establishment>).Find(a => a.id == item.id_establishment).</td>
+        <td>@item.price</td>
+        <td>@((ViewBag.categories as List<Finances.Models.Entities.Category>).Find(a => a.id == item.id_category).name)</td>
+        <td>@((ViewBag.establishments as List<Finances.Models.Entities.Establishment>).Find(a => a.id == item.id_establishment).name)</td>
         <td>
             <a href="/Expenses/Delete/@item.id" class="btn btn-danger">Deletar</a> |
             <a href="/Expenses/Edit/@item.id" class="btn btn-success">Alterar</a>

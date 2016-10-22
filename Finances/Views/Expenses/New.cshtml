@@ -7,8 +7,8 @@
 <form action="/Expenses/New" method="post">
     <div class="form-horizontal">
         <div class="form-group">
-            <label for="value">Valor</label>
-            <input type="number" name="value" placeholder="Valor" class="form-control" />
+            <label for="price">Valor</label>
+            <input type="text" name="price" placeholder="Valor" pattern="[0-9,]*" class="form-control" />
 
         </div>
         <div class="form-group">
@@ -17,7 +17,7 @@
 
         </div>
         <div class="form-group">
-            <label for="value">Categoria</label>
+            <label for="id_category">Categoria</label>
             <select name="id_category">
                 @foreach (var item in (ViewBag.categories as IEnumerable<Finances.Models.Entities.Category>))
                 {
@@ -27,8 +27,8 @@
 
         </div>
         <div class="form-group">
-            <label for="value">Categoria</label>
-            <select name="id_category">
+            <label for="id_establishment">Estabelecimento</label>
+            <select name="id_establishment">
                 @foreach (var item in (ViewBag.establishments as IEnumerable<Finances.Models.Entities.Establishment>))
                 {
                     <option value="@item.id">@item.name</option>

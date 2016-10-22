@@ -51,6 +51,7 @@ namespace Finances.Models.Repositories
                     id_user = (int)dr["id_user_establishment"]
                 });
             }
+            dr.Close();
             return establishments;
         }
 
@@ -75,6 +76,7 @@ namespace Finances.Models.Repositories
                     id_user = (int)dr["id_user_establishment"]
                 };
             }
+            dr.Close();
             return establishment;
         }
 

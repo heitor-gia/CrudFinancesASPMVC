@@ -57,6 +57,7 @@ namespace Finances.Models.Repositories
                     name = (string)dr["name_user"]
                 };
             }
+            dr.Close();
             return result;
         }
 

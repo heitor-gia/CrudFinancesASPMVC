@@ -45,6 +45,7 @@ namespace Finances.Connection
             Connect();
             pCmd.Connection = conn;
             pCmd.ExecuteNonQuery();
+            Close();
 
         }
 

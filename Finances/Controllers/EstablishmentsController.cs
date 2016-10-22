@@ -35,7 +35,7 @@ namespace Finances.Controllers
         {
             if (Session["loggedIn"] == null) return RedirectToAction("Login");
 
-            establishment.id_user = (int)Session["user_id"];
+            establishment.id_user = (int)Session["id_user"];
             establishmentsRepository.Create(establishment);
             return RedirectToAction("Index");
         }
@@ -44,7 +44,7 @@ namespace Finances.Controllers
         {
             if (Session["loggedIn"] == null) return RedirectToAction("Login");
 
-            if (establishmentsRepository.GetById(id).id_user == (int)Session["user_id"])
+            if (establishmentsRepository.GetById(id).id_user == (int)Session["id_user"])
             {
                 establishmentsRepository.Delete(id);
             }

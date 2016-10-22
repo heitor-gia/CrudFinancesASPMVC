@@ -1,0 +1,26 @@
+﻿@model Finances.Models.Entities.Category
+@{
+    ViewBag.Title = "Nova categoria";
+}
+
+<h2>Nova Categoria</h2>
+
+<form method="post" action="/Categories/New">
+
+
+    <div class="form-horizontal">
+        <h4>Estabelecimento</h4>
+        <hr />
+        <div class="form-group">
+            <label for="name">Nome:</label>
+            <input type="text" name="name" placeholder="Nome" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+</form>

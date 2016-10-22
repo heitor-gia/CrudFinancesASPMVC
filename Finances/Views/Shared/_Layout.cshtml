@@ -28,8 +28,9 @@
                     else
                     {
 
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Dispesas", "Index", "Expenses")</li>
+                        <li>@Html.ActionLink("Categorias", "Index", "Categories")</li>
+                        <li>@Html.ActionLink("Estabelecimentos", "Index", "Establishments")</li>
                         <li>@Html.ActionLink("Sair", "Logout", "Home")</li>
 
                     }
@@ -41,7 +42,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>Desenvolvido por<a href="http://www.github.com/heitor-gia">Heitor Gianastasio</a></p>
+            <p>Desenvolvido por <a href="http://www.github.com/heitor-gia">Heitor Gianastasio</a></p>
         </footer>
     </div>
 

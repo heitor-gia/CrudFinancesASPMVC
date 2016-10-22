@@ -56,6 +56,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -182,11 +183,15 @@
     <Content Include="Views\Expenses\Index.cshtml" />
     <Content Include="Views\Expenses\New.cshtml" />
     <Content Include="Views\Expenses\Edit.cshtml" />
+    <Content Include="Views\Establishments\New.cshtml" />
+    <Content Include="Views\Establishments\Index.cshtml" />
+    <Content Include="Views\Establishments\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Categories\New.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Categories\" />
-    <Folder Include="Views\Establishments\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

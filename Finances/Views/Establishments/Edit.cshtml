@@ -1,0 +1,25 @@
+﻿@model Finances.Models.Entities.Establishment
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Editar Estabelecimento</h2>
+<form method="post" action="/Establishments/Edit">
+
+
+    <div class="form-horizontal">
+        <h4>Estabelecimento</h4>
+        <hr />
+        <div class="form-group">
+            <label for="name">Nome:</label>
+            <input type="text" name="name" placeholder="Nome" class="form-control" value="@Model.name" />
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" value="@Model.id" name="id" />
+            <input type="hidden" value="@Model.id_user" name="id_user" />
+            <input type="submit" value="Salvar" class="btn btn-default" />
+        </div>
+
+    </div>
+</form>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Finances.Models.Entities.Establishment>
+
+@{
+    ViewBag.Title = "Estabelecimentos";
+}
+
+<h2>Estabelecimentos</h2>
+
+<p>
+    <a href="/Establishments/New" class="btn btn-primary">Novo estabelecimento</a>
+</p>
+<table class="table">
+    <tr>
+        <th>Nome</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.name
+        </td>
+        <td>
+            <a href="/Establishments/Edit/@item.id" class="btn btn-success">Editar</a>
+            <a href="/Establishments/Delete/@item.id" class="btn btn-danger">Deletar</a>
+        </td>
+    </tr>
+}
+
+</table>
